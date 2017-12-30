@@ -1,13 +1,14 @@
 import { GraphQLObjectType, GraphQLSchema } from 'graphql'
-import { wallet } = from './fields'
+import { UserQueries } from './model/queries'
+import { UserMutations } from './model/mutations'
 
 export const schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
 		name: 'RootQuery',
-		fields: () => queries
+		fields: () => UserQueries()
 	}),
 	mutation: new GraphQLObjectType({
 		name: 'RootMutation',
-		fields: () => mutations
+		fields: () => UserMutations()
 	})
 })

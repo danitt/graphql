@@ -1,3 +1,4 @@
+import * as http from 'http'
 import * as mongoose from 'mongoose'
 import { logger } from './logger'
 
@@ -17,12 +18,14 @@ export async function startDB() {
 	})
 }
 
-export function shutdownHandler() {
+export function shutdownHandler(server: http.Server) {
 	function exitHandler() {
 		mongoose.connection.close(err => {
-			if (err) logger.warn('Error closing mdb connection')
+			if (err) logger.warn('Error closing MDB connection')
 			logger.info('⚙️: MDB connection closed')
 			logger.info('✅: App shutdown complete')
+			server.close()
+			process.exit()
 		})
 	}
 	process.on('exit', exitHandler)
