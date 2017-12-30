@@ -1,4 +1,5 @@
-# Experimental BE boilerplate using Node + Typescript + Express + MongoDB + GraphQL
+# NoSQL + GraphQL
+Experimental BE boilerplate using Node + Typescript + Express + MongoDB + GraphQL
 
 ## Quick Start
 npm install
@@ -12,12 +13,15 @@ npm start
 
 ## Sample Queries
 ```graphql
-{
-	# Query
+query listUsers {
 	users {
 		id, name
 	},
-	# Mutation
-	createUser(name: "dan")
+}
+
+mutation createDan {
+	createUser(name: "Dan") {
+		id
+	}
 }
 ```

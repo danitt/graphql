@@ -6,7 +6,7 @@ export interface userSchema {
 }
 
 const userSchema = new mongoose.Schema({
-	name: { type: String, trim: true, select: false, default: `Anonymous` }
+	name: { type: String, trim: true, default: `Anonymous` }
 }, {
 		toJSON: { virtuals: true, getters: true },
 		toObject: { virtuals: true, getters: true },
